@@ -87,16 +87,39 @@ const Details = ({ id }: DetailsProps) => {
             <X key="2" className="h-4 w-4 text-gray-500" />
           </Link>
 
-          {nextProjectId && (
+          {nextProjectId ? (
             <Link href={`/details/${nextProjectId}`}>
-              <Button variant="onlyIcon" onClick={handleClick} Icon={ChevronUp} />
+              <Button
+                variant="onlyIcon"
+                onClick={handleClick}
+                Icon={ChevronUp}
+                className="bg-amber-200"
+              />
             </Link>
+          ) : (
+            // TODO: Disable UI
+            <Button
+              className="p-5"
+              disabled={!nextProjectId}
+              variant="onlyIcon"
+              onClick={handleClick}
+              Icon={ChevronUp}
+              iconColor="text-gray-600"
+            />
           )}
 
-          {previousProjectId && (
+          {previousProjectId ? (
             <Link href={`/details/${previousProjectId}`}>
               <Button variant="onlyIcon" onClick={handleClick} Icon={ChevronDown} />
             </Link>
+          ) : (
+            <Button
+              disabled={!previousProjectId}
+              variant="onlyIcon"
+              onClick={handleClick}
+              Icon={ChevronDown}
+              iconColor="text-gray-600"
+            />
           )}
 
           <div className="flex flex-row items-center">
